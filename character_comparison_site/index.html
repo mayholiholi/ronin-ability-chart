@@ -3,23 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Character Comparison</title>
+    <title>能力値比較チャート</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="app">
-        <div>
-            <h1>Character Comparison</h1>
-            <div class="character-list">
-                <div v-for="character in characters" :key="character.Name">
-                    <input type="checkbox" :id="character.Name" :value="character.Name" v-model="selectedCharacters">
-                    <label :for="character.Name">{{ character.Name }}</label>
-                </div>
-            </div>
+    <header>
+        <h1 class="hero-title">能力値比較チャート</h1>
+        <p class="hero-sub"><a href="https://teamninja-studio.com/ronin/jp/" target="_blank" class="hero-link">Rise of the Ronin</a> 能力値比較ツール</p>
+        <div class="hero-notice">このWebアプリはファンによる非公式の作成物です。ゲーム内の能力値をもとに、複数キャラクターをレーダーチャートで並べて比較できます。情報の正確性については保証いたしかねます。</div>
+    </header>
+
+    <main>
+        <div id="segmentGroup" class="segment-group"></div>
+        <div id="panelWrap" class="panel-wrap"></div>
+
+        <div class="actions">
+            <button id="clearBtn" class="btn-outline">選択を解除</button>
+            <span id="counter" class="counter"></span>
         </div>
-        <canvas id="radarChart"></canvas>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+        <div id="chartCard" class="card chart-card" style="display:none;">
+            <div class="card-title">比較チャート</div>
+            <canvas id="radarChart"></canvas>
+        </div>
+
+        <div id="emptyMsg" class="empty-msg">
+            <div class="empty-icon">📊</div>
+            人物を選択すると<br>レーダーチャートが表示されます
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="https://mayholiholi.github.io/">mayholiholi</a>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="app.js"></script>
 </body>
